@@ -10,6 +10,7 @@ from ..collection_base import CollectionRequestBase, CollectionResponseBase
 from ..request_builder_base import RequestBuilderBase
 from ..model.children_collection_page import ChildrenCollectionPage
 import json
+from onedrivesdk.model.item import Item
 
 class ChildrenCollectionRequest(CollectionRequestBase):
 
@@ -87,7 +88,7 @@ class ChildrenCollectionRequestBuilder(RequestBuilderBase):
             :class:`ItemRequestBuilder<onedrivesdk.request.item_request_builder.ItemRequestBuilder>`:
                 A ItemRequestBuilder for that key
         """
-        return ItemRequestBuilder(self.append_to_request_url(str(key)), self._client)
+        return ItemRequestBuilder(self.append_to_request_url(unicode(key)), self._client)
 
     def request(self, expand=None, select=None, top=None, order_by=None, options=None):
         """Builds the ChildrenCollectionRequest
